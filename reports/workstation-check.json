@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-05-23T15:06:41+00:00",
+  "project_root": "/Users/jiuyu/Desktop/ai-learning-lab",
+  "python_version": "3.11.15",
+  "python_executable": "/Users/jiuyu/miniconda3/envs/ai-basic/bin/python3",
+  "platform": "macOS-15.6.1-arm64-arm-64bit",
+  "git_branch": {
+    "command": "git branch --show-current",
+    "returncode": 128,
+    "stdout": "",
+    "stderr": "fatal: not a git repository (or any of the parent directories): .git"
+  },
+  "git_status": {
+    "command": "git status --short",
+    "returncode": 128,
+    "stdout": "",
+    "stderr": "fatal: not a git repository (or any of the parent directories): .git"
+  },
+  "project_files": [
+    ".gitignore",
+    ".idea/.gitignore",
+    ".idea/ai-learning-lab.iml",
+    ".idea/inspectionProfiles/profiles_settings.xml",
+    ".idea/misc.xml",
+    ".idea/modules.xml",
+    ".idea/workspace.xml",
+    "README.md",
+    "main.py",
+    "notes/learning-log.md",
+    "requitements.txt",
+    "src/workstation_check.py"
+  ]
+}
