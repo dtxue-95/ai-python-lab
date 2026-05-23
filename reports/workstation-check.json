@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-05-23T15:27:24+00:00",
-  "project_root": "/Users/jiuyu/Desktop/ai-learning-lab",
-  "python_version": "3.11.15",
-  "python_executable": "/Users/jiuyu/miniconda3/envs/ai-basic/bin/python3",
-  "platform": "macOS-15.6.1-arm64-arm-64bit",
-  "git_branch": {
+  "生成时间": "2026-05-23T23:47:23",
+  "项目根目录": "/Users/jiuyu/Desktop/ai-learning-lab",
+  "Python版本": "3.11.15",
+  "Python执行路径": "/Users/jiuyu/miniconda3/envs/ai-basic/bin/python3",
+  "操作系统": "macOS-15.6.1-arm64-arm-64bit",
+  "Git当前分支": {
     "command": "git branch --show-current",
     "returncode": 0,
     "stdout": "main",
     "stderr": ""
   },
-  "git_status": {
+  "Git文件状态": {
     "command": "git status --short",
     "returncode": 0,
-    "stdout": "",
+    "stdout": "M src/workstation_check.py",
     "stderr": ""
   },
-  "project_files": [
+  "项目文件列表": [
     ".gitignore",
     ".idea/.gitignore",
     ".idea/ai-learning-lab.iml",

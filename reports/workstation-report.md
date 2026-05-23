@@ -1,18 +1,18 @@
-# Workstation Report
+# 开发环境检查报告
 
-- Generated at: 2026-05-23T15:27:24+00:00
-- Project root: `/Users/jiuyu/Desktop/ai-learning-lab`
-- Python version: `3.11.15`
-- Python executable: `/Users/jiuyu/miniconda3/envs/ai-basic/bin/python3`
-- Git branch: `main`
+- 生成时间：2026-05-23T23:47:23
+- 项目根目录：`/Users/jiuyu/Desktop/ai-learning-lab`
+- Python 版本：`3.11.15`
+- Python 路径：`/Users/jiuyu/miniconda3/envs/ai-basic/bin/python3`
+- Git 分支：`main`
 
-## Git status
+## Git 状态
 
 ```text
-working tree clean
+M src/workstation_check.py
 ```
 
-## Project files
+## 项目文件列表
 
 - `.gitignore`
 - `.idea/.gitignore`
