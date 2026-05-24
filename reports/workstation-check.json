@@ -1,5 +1,5 @@
 {
-  "生成时间": "2026-05-23T23:47:23",
+  "生成时间": "2026-05-24T21:39:35",
   "项目根目录": "/Users/jiuyu/Desktop/ai-learning-lab",
   "Python版本": "3.11.15",
   "Python执行路径": "/Users/jiuyu/miniconda3/envs/ai-basic/bin/python3",
@@ -7,13 +7,13 @@
   "Git当前分支": {
     "command": "git branch --show-current",
     "returncode": 0,
-    "stdout": "main",
+    "stdout": "practice/add-daily-note",
     "stderr": ""
   },
   "Git文件状态": {
     "command": "git status --short",
     "returncode": 0,
-    "stdout": "M src/workstation_check.py",
+    "stdout": "?? notebooks/",
     "stderr": ""
   },
   "项目文件列表": [
@@ -27,6 +27,7 @@
     ".idea/workspace.xml",
     "README.md",
     "main.py",
+    "notebooks/01-workstation-review.py",
     "notes/learning-log.md",
     "reports/workstation-check.json",
     "reports/workstation-report.md",
