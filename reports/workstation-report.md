@@ -1,15 +1,15 @@
 # 开发环境检查报告
 
-- 生成时间：2026-05-23T23:47:23
+- 生成时间：2026-05-24T21:39:35
 - 项目根目录：`/Users/jiuyu/Desktop/ai-learning-lab`
 - Python 版本：`3.11.15`
 - Python 路径：`/Users/jiuyu/miniconda3/envs/ai-basic/bin/python3`
-- Git 分支：`main`
+- Git 分支：`practice/add-daily-note`
 
 ## Git 状态
 
 ```text
-M src/workstation_check.py
+?? notebooks/
 ```
 
 ## 项目文件列表
@@ -24,6 +24,7 @@ M src/workstation_check.py
 - `.idea/workspace.xml`
 - `README.md`
 - `main.py`
+- `notebooks/01-workstation-review.py`
 - `notes/learning-log.md`
 - `reports/workstation-check.json`
 - `reports/workstation-report.md`
