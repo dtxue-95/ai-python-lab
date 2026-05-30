@@ -1,0 +1,5 @@
+print("=== 个人介绍 ===")
+print("姓名：[九余]")
+print("目标：成为 AI 工程师")
+print("正在学习：Python 编程")
+print("=" * 20)
