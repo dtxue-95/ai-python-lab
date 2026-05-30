@@ -1,5 +1,5 @@
 {
-  "生成时间": "2026-05-30T15:36:52",
+  "生成时间": "2026-05-30T17:06:01",
   "项目根目录": "/Users/jiuyu/Desktop/ai-learning-lab",
   "Python版本": "3.11.15",
   "Python执行路径": "/Users/jiuyu/miniconda3/envs/ai-basic/bin/python",
@@ -13,7 +13,7 @@
   "Git文件状态": {
     "command": "git status --short",
     "returncode": 0,
-    "stdout": "M main.py\n?? basicpython/\n?? docs/basic-log.md",
+    "stdout": "D  testFile/new_text.py\n?? advancedpython/\n?? docs/advance-log.md",
     "stderr": ""
   },
   "项目文件列表": [
@@ -27,6 +27,8 @@
     ".idea/workspace.xml",
     "README.md",
     "__pycache__/main.cpython-311.pyc",
+    "advancedpython/featureTask.py",
+    "advancedpython/oop.py",
     "basicpython/1.about_me.py",
     "basicpython/output/quotes.html",
     "basicpython/output/quotes.md",
@@ -39,6 +41,7 @@
     "basicpython/简单线性回归模型训练测试.py",
     "basicpython/网络爬虫.py",
     "basicpython/自动化脚本.py",
+    "docs/advance-log.md",
     "docs/basic-log.md",
     "docs/commands.md",
     "main.py",
@@ -47,7 +50,6 @@
     "reports/workstation-check.json",
     "reports/workstation-report.md",
     "requitements.txt",
-    "src/workstation_check.py",
-    "testFile/new_text.py"
+    "src/workstation_check.py"
   ]
 }
