@@ -1,0 +1,12 @@
+{
+  "model": "ResNet-50",
+  "learning_rate": 0.001,
+  "epochs": 100,
+  "batch_size": 32,
+  "classes": [
+    "猫",
+    "狗",
+    "鸟"
+  ],
+  "use_gpu": true
+}
