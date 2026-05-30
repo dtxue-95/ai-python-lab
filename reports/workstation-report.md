@@ -1,6 +1,6 @@
 # 开发环境检查报告
 
-- 生成时间：2026-05-30T17:06:01
+- 生成时间：2026-05-30T21:40:36
 - 项目根目录：`/Users/jiuyu/Desktop/ai-learning-lab`
 - Python 版本：`3.11.15`
 - Python 路径：`/Users/jiuyu/miniconda3/envs/ai-basic/bin/python`
@@ -9,9 +9,9 @@
 ## Git 状态
 
 ```text
-D  testFile/new_text.py
-?? advancedpython/
-?? docs/advance-log.md
+M docs/advance-log.md
+?? advancedpython/data.txt
+?? advancedpython/error.py
 ```
 
 ## 项目文件列表
@@ -26,6 +26,8 @@ D  testFile/new_text.py
 - `.idea/workspace.xml`
 - `README.md`
 - `__pycache__/main.cpython-311.pyc`
+- `advancedpython/data.txt`
+- `advancedpython/error.py`
 - `advancedpython/featureTask.py`
 - `advancedpython/oop.py`
 - `basicpython/1.about_me.py`

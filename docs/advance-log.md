@@ -276,3 +276,181 @@ print(account.get_balance())  # 1300
 | _name  | 内部使用（约定）   | self._balance |
 | __name | 名称改写（强制隐藏） | self.__secret |
 
+
+# 异常处理
+## 常见的异常类型
+| 异常类型                | 触发场景    | 示例                   |
+|---------------------|---------|----------------------|
+| `ZeroDivisonError`  | 除以0     | `1/0`                | 
+| `TypeError`         | 类型操作不匹配 | `"test" + 9`         | 
+| `ValueErro`         | 值不合法    | `int("hello")`       | 
+| `IndexError`        | 列表索引越界  | `[1,2][5]`           | 
+| `KeyError`          | 字典键不存在  | `{"a":1} ["b"]`      | 
+| `FileNotFoundError` | 文件不存在   | `open("不存在的文件.txt")` | 
+| `AttributeError`    | 属性不存在   | `"hello".foo()`      | 
+| `NameError`         | 变量未定义   | `print(xyz)`         | 
+| `ImportError`       | 导入失败    | `import 不存在的模块`      | 
+## try/except 基本用法
+- 关键点：有了 try/except，程序不会因为错误而崩溃。
+
+`try/except` 的逻辑是：尝试执行代码，如果出错了，执行备选方案。
+```markdown
+try:
+    number = int(input("请输入一个数字: "))
+    print(f"你输入的是: {number}")
+except ValueError:
+    print("输入无效！请输入一个数字。")
+
+print("程序继续运行...")  # 不管有没有异常，这行都会执行
+```
+## 捕获不同类型的异常
+### 捕获多种异常
+```python
+def safe_divide(a, b):
+    try:
+        result = a / b
+        return result
+    except ZeroDivisionError:
+        print("错误：不能除以零！")
+        return None
+    except TypeError:
+        print("错误：请传入数字！")
+        return None
+
+print(safe_divide(10, 3))    # 3.333...
+print(safe_divide(10, 0))    # 错误：不能除以零！ → None
+print(safe_divide("10", 3))  # 错误：请传入数字！ → None
+```
+### 捕获多种异常的合并写法
+```python
+try:
+    # 可能出错的代码
+    value = int(input("请输入数字: "))
+    result = 100 / value
+    print(f"结果: {result}")
+except (ValueError, ZeroDivisionError) as e:
+    print(f"出错了: {e}")
+```
+### 获取异常信息
+```python
+try:
+    number = int("abc")
+except ValueError as e:
+    print(f"异常类型: {type(e).__name__}")  # ValueError
+    print(f"异常信息: {e}")                 # invalid literal for int() with base 10: 'abc'
+```
+### 捕获所有异常（谨慎使用）
+```python
+try:
+    # 一些代码
+    result = risky_operation()
+except Exception as e:
+    print(f"发生了意外错误: {type(e).__name__}: {e}")
+```
+
+```tips
+不要滥用 except Exception
+
+捕获所有异常听起来很方便，但会掩盖真正的 bug。你应该尽量捕获具体的异常类型，只在最外层使用 except Exception 作为兜底。
+ 
+ # 不好的做法 ❌
+try:
+    do_something()
+except:  # 捕获所有异常，包括 KeyboardInterrupt
+    pass   # 而且还什么都不做！
+
+# 好的做法 ✅
+try:
+    do_something()
+except ValueError:
+    handle_value_error()
+except FileNotFoundError:
+    handle_file_not_found()
+except Exception as e:
+    logging.error(f"未预期的错误: {e}")
+```
+## try / except / else / finally
+完整的异常处理结构有四个部分:
+```python
+try:
+    # 尝试执行的代码
+    file = open("data.txt", "r")
+    content = file.read()
+except FileNotFoundError:
+    # 出错时执行
+    print("文件不存在！")
+else:
+    # 没有出错时执行
+    print(f"文件内容: {content}")
+finally:
+    # 不管有没有出错都执行（清理资源（关闭文件、断开连接））
+    print("操作完成")
+```
+## finally的典型用途
+```python
+file = None
+try:
+    file = open("data.txt", "r")
+    data = file.read()
+    # 处理数据...
+except FileNotFoundError:
+    print("文件不存在")
+finally:
+    if file:
+        file.close()   # 不管有没有出错，都要关闭文件
+        print("文件已关闭")
+```
+## 抛出异常
+主动抛出异常——当你发现一个不合理的状态时，告诉调用者”出问题了”。
+### raise 语句
+```python
+def set_age(age):
+    if not isinstance(age, int):
+        raise TypeError("年龄必须是整数")
+    if age < 0 or age > 150:
+        raise ValueError(f"年龄 {age} 不合理，应该在 0-150 之间")
+    return age
+
+# 正常使用
+print(set_age(25))      # 25
+
+# 触发异常
+try:
+    set_age(-5)
+except ValueError as e:
+    print(f"错误: {e}")  # 错误: 年龄 -5 不合理，应该在 0-150 之间
+
+try:
+    set_age("二十")
+except TypeError as e:
+    print(f"错误: {e}")  # 错误: 年龄必须是整数
+```
+### 自定义异常
+当内置异常类型不够用时，可以自定义：
+
+```python
+class InsufficientFundsError(Exception):
+    """余额不足异常"""
+    def __init__(self, balance, amount):
+        self.balance = balance
+        self.amount = amount
+        super().__init__(f"余额不足：当前余额 {balance}，尝试取出 {amount}")
+
+class BankAccount:
+    def __init__(self, balance=0):
+        self.balance = balance
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            raise InsufficientFundsError(self.balance, amount)
+        self.balance -= amount
+        return self.balance
+
+# 使用
+account = BankAccount(1000)
+try:
+    account.withdraw(1500)
+except InsufficientFundsError as e:
+    print(f"交易失败: {e}")
+    print(f"当前余额: {e.balance}, 请求金额: {e.amount}")
+```
