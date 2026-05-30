@@ -275,8 +275,6 @@ print(account.get_balance())  # 1300
 | name   | 公开属性       | self.name     |
 | _name  | 内部使用（约定）   | self._balance |
 | __name | 名称改写（强制隐藏） | self.__secret |
-
-
 # 异常处理
 ## 常见的异常类型
 | 异常类型                | 触发场景    | 示例                   |
@@ -453,4 +451,235 @@ try:
 except InsufficientFundsError as e:
     print(f"交易失败: {e}")
     print(f"当前余额: {e.balance}, 请求金额: {e.amount}")
+```
+# 文件操作与序列化
+## 为什么需要文件操作
+到目前为止，你的程序中的数据都在内存中——程序一关，数据就没了。但在真实场景中：
+
+训练好的 AI 模型需要保存到文件，下次直接加载
+数据集存在 CSV 文件里，需要读取到程序中
+训练日志需要写入文件，方便后续分析
+配置参数存在 JSON 文件里，启动时需要加载
+文件操作就是让你的程序能持久化保存数据。
+## 文件读写基础
+### 打开文件：open()
+```python
+file = open("文件路径", "模式", encoding="编码")
+```
+常用模式：
+
+| 模式   | 含义          | 文件不存在时 |
+|------|-------------|--------|
+| `r`  | 读取 | 报错     |
+| `w`  | 写入（覆盖） | 自动创建   |
+| `a`  | 追加(在末尾添加)   | 自动创建   |
+| `x`  | 创建(文件已存在则报错) | 自动创建   |
+| `rb` | 读取二进制文件     | 报错     |
+| `wb` | 写入二进制文件     | 自动创建   |
+
+### 写入文件
+```python
+# 方式 1：手动打开和关闭（不推荐）
+file = open("hello.txt", "w", encoding="utf-8")
+file.write("你好，世界！\n")
+file.write("我正在学习 Python 文件操作。\n")
+file.close()  # 别忘了关闭文件！
+
+# 方式 2：使用 with 语句（推荐！）
+with open("hello.txt", "w", encoding="utf-8") as file:
+    file.write("你好，世界！\n")
+    file.write("我正在学习 Python 文件操作。\n")
+# 离开 with 块时，文件自动关闭，不需要手动 close()
+```
+```
+with 语句有两个好处：
+
+自动关闭文件——不用担心忘记 close()
+异常安全——即使代码出错，文件也会被正确关闭
+以后写文件操作，永远用 with。
+```
+### 读取文件
+```python
+# 读取全部内容
+with open("hello.txt", "r", encoding="utf-8") as file:
+    content = file.read()
+    print(content)
+
+# 逐行读取
+with open("hello.txt", "r", encoding="utf-8") as file:
+    for line in file:
+        print(line.strip())  # strip() 去掉行尾的换行符
+
+# 读取所有行到列表
+with open("hello.txt", "r", encoding="utf-8") as file:
+    lines = file.readlines()
+    print(lines)  # ['你好，世界！\n', '我正在学习 Python 文件操作。\n']
+```
+### 追加内容
+```python
+# "a" 模式：在文件末尾追加，不会覆盖原有内容
+with open("log.txt", "a", encoding="utf-8") as file:
+    file.write("2026-02-09: 开始学习\n")
+    file.write("2026-02-09: 完成第一章\n")
+```
+### 写入多行
+```python
+lines = ["第一行\n", "第二行\n", "第三行\n"]
+
+with open("output.txt", "w", encoding="utf-8") as file:
+    file.writelines(lines)  # 写入一个字符串列表
+
+# 或者用 print 写入文件
+with open("output.txt", "w", encoding="utf-8") as file:
+    print("第一行", file=file)  # print 可以指定输出到文件
+    print("第二行", file=file)
+    print("第三行", file=file)
+```
+## 处理不同文件格式
+### csv文件
+```python
+import csv
+
+# 写入 CSV
+tasks = [
+    ["功能", "负责人", "工时"],
+    ["登录 API", "Mina", 8],
+    ["RAG 演示", "Kai", 12],
+    ["图表视图", "Noah", 5],
+]
+
+with open("tasks.csv", "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    writer.writerows(tasks)
+
+# 读取 CSV
+with open("tasks.csv", "r", encoding="utf-8") as file:
+    reader = csv.reader(file)
+    header = next(reader)  # 读取表头
+    print(f"列名: {header}")
+
+    for row in reader:
+        feature, owner, hours = row
+        print(f"{feature}, 负责人: {owner}, 估算: {hours} 小时")
+
+# 用字典方式读取（更方便）
+with open("tasks.csv", "r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(f"{row['功能']} 由 {row['负责人']} 负责")
+```
+### Json文件
+```python
+import json
+
+# 写入 JSON
+config = {
+    "model": "ResNet-50",
+    "learning_rate": 0.001,
+    "epochs": 100,
+    "batch_size": 32,
+    "classes": ["猫", "狗", "鸟"],
+    "use_gpu": True
+}
+
+with open("config.json", "w", encoding="utf-8") as file:
+    json.dump(config, file, ensure_ascii=False, indent=2)
+
+# 读取 JSON
+with open("config.json", "r", encoding="utf-8") as file:
+    loaded_config = json.load(file)
+
+print(f"模型: {loaded_config['model']}")
+print(f"学习率: {loaded_config['learning_rate']}")
+print(f"类别: {loaded_config['classes']}")
+```
+### 文本日志文件
+```python
+from datetime import datetime
+
+def log(message, filename="app.log"):
+    """写入日志"""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(filename, "a", encoding="utf-8") as file:
+        file.write(f"[{timestamp}] {message}\n")
+
+# 使用
+log("程序启动")
+log("加载数据集: train.csv")
+log("开始训练模型")
+log("训练完成，准确率: 92.5%")
+```
+
+### 路径处理：pathlib
+pathlib 是 Python 3 推荐的路径处理方式，比 os.path 更现代、更好用：
+
+```python
+from pathlib import Path
+
+# 创建路径对象
+data_dir = Path("data")
+train_file = data_dir / "train" / "data.csv"  # 用 / 拼接路径！
+print(train_file)  # data/train/data.csv
+
+# 检查路径
+print(train_file.exists())    # 文件是否存在
+print(train_file.is_file())   # 是否是文件
+print(data_dir.is_dir())      # 是否是目录
+
+# 获取文件信息
+path = Path("model.pth")
+print(path.name)       # model.pth（文件名）
+print(path.stem)       # model（不带扩展名）
+print(path.suffix)     # .pth（扩展名）
+print(path.parent)     # .（父目录）
+
+# 创建目录
+Path("output/results").mkdir(parents=True, exist_ok=True)
+
+# 列出目录中的文件
+for file in Path(".").glob("*.py"):
+    print(file)
+
+# 递归查找所有 CSV 文件
+for csv_file in Path("data").rglob("*.csv"):
+    print(csv_file)
+
+# 读写文件的便捷方法
+Path("note.txt").write_text("Hello!", encoding="utf-8")
+content = Path("note.txt").read_text(encoding="utf-8")
+print(content)  # Hello!
+```
+## 序列化：保存Python对象
+### 什么是序列化？
+序列化就是把 Python 对象（列表、字典、类实例等）转换成可以保存到文件的格式。反序列化就是反过来，从文件恢复成 Python 对象。
+
+根据要保存的内容选择格式：
+
+| 需求                     | 推荐格式                |
+|------------------------|---------------------|
+| 配置、API响应、小型结构化数据       | 用`json`模块保存JSON     |
+| 行列形式的数据，需要能用表格软件打开     | 用`csv`模块保存CSV       |
+| 只在Python内部使用、来源完全可信的对象 | 用`pickle`模块保存pickle |
+
+这里最重要的取舍是安全性。JSON 和 CSV 可读、适合普通学习项目；pickle 很方便也很快，但它是二进制格式，而且不能加载来源不可信的文件。
+
+### pickle:保存任意Python对象
+```python
+import pickle
+
+# 保存 Python 对象
+data = {
+    "hours": [2, 5, 1, 3],
+    "features": ["登录 API", "RAG 演示", "图表视图", "部署脚本"],
+    "metadata": {"module": "portfolio backend", "year": 2026}
+}
+
+with open("data.pkl", "wb") as file:  # 注意是 "wb"（二进制写入）
+    pickle.dump(data, file)
+
+# 加载 Python 对象
+with open("data.pkl", "rb") as file:  # 注意是 "rb"（二进制读取）
+    loaded_data = pickle.load(file)
+
+print(loaded_data["features"])  # ['登录 API', 'RAG 演示', '图表视图', '部署脚本']
 ```

@@ -1,6 +1,6 @@
 # 开发环境检查报告
 
-- 生成时间：2026-05-30T21:40:36
+- 生成时间：2026-05-31T00:01:24
 - 项目根目录：`/Users/jiuyu/Desktop/ai-learning-lab`
 - Python 版本：`3.11.15`
 - Python 路径：`/Users/jiuyu/miniconda3/envs/ai-basic/bin/python`
@@ -10,8 +10,23 @@
 
 ```text
 M docs/advance-log.md
-?? advancedpython/data.txt
-?? advancedpython/error.py
+?? advancedpython/app.log
+?? advancedpython/autoClose.txt
+?? advancedpython/config.json
+?? advancedpython/data.pkl
+?? advancedpython/file.py
+?? advancedpython/fileCase.py
+?? advancedpython/fileCsv.py
+?? advancedpython/fileJson.py
+?? advancedpython/filelog.py
+?? advancedpython/filepathlib.py
+?? advancedpython/filepickle.py
+?? advancedpython/hello.txt
+?? advancedpython/note.txt
+?? advancedpython/output.txt
+?? advancedpython/task_hours.csv
+?? advancedpython/task_log.json
+?? advancedpython/tasks.csv
 ```
 
 ## 项目文件列表
@@ -26,10 +41,27 @@ M docs/advance-log.md
 - `.idea/workspace.xml`
 - `README.md`
 - `__pycache__/main.cpython-311.pyc`
+- `advancedpython/app.log`
+- `advancedpython/autoClose.txt`
+- `advancedpython/config.json`
+- `advancedpython/data.pkl`
 - `advancedpython/data.txt`
 - `advancedpython/error.py`
 - `advancedpython/featureTask.py`
+- `advancedpython/file.py`
+- `advancedpython/fileCase.py`
+- `advancedpython/fileCsv.py`
+- `advancedpython/fileJson.py`
+- `advancedpython/filelog.py`
+- `advancedpython/filepathlib.py`
+- `advancedpython/filepickle.py`
+- `advancedpython/hello.txt`
+- `advancedpython/note.txt`
 - `advancedpython/oop.py`
+- `advancedpython/output.txt`
+- `advancedpython/task_hours.csv`
+- `advancedpython/task_log.json`
+- `advancedpython/tasks.csv`
 - `basicpython/1.about_me.py`
 - `basicpython/output/quotes.html`
 - `basicpython/output/quotes.md`
