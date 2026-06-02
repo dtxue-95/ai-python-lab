@@ -1,6 +1,6 @@
 # 开发环境检查报告
 
-- 生成时间：2026-06-02T23:01:00
+- 生成时间：2026-06-03T00:00:10
 - 项目根目录：`/Users/jiuyu/Desktop/ai-learning-lab`
 - Python 版本：`3.11.15`
 - Python 路径：`/Users/jiuyu/miniconda3/envs/ai-basic/bin/python`
@@ -9,16 +9,8 @@
 ## Git 状态
 
 ```text
-M docs/advance-log.md
-?? advancedpython/fcclosure.py
-?? advancedpython/fcdecorator.py
-?? advancedpython/fcfilter.py
-?? advancedpython/fcmap.py
-?? advancedpython/fcsorted.py
-?? "advancedpython/fc\345\207\275\346\225\260\345\237\272\347\241\200.py"
-?? "advancedpython/fc\345\214\277\345\220\215\345\207\275\346\225\260lambda.py"
-?? "basicpython/test\346\225\260\346\215\256\345\210\206\346\236\220.py"
-?? "basicpython/\346\225\260\346\215\256\345\210\206\346\236\220.py"
+?? "advancedpython/\350\277\255\344\273\243\345\231\250\344\270\216\347\224\237\346\210\220\345\231\250.py"
+?? docs/generator-log.md
 ```
 
 ## 项目文件列表
@@ -62,6 +54,7 @@ M docs/advance-log.md
 - `advancedpython/task_hours.csv`
 - `advancedpython/task_log.json`
 - `advancedpython/tasks.csv`
+- `advancedpython/迭代器与生成器.py`
 - `basicpython/1.about_me.py`
 - `basicpython/output/quotes.html`
 - `basicpython/output/quotes.md`
@@ -79,6 +72,7 @@ M docs/advance-log.md
 - `docs/advance-log.md`
 - `docs/basic-log.md`
 - `docs/commands.md`
+- `docs/generator-log.md`
 - `main.py`
 - `notebooks/01-workstation-review.py`
 - `notes/learning-log.md`
