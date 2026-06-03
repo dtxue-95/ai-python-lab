@@ -1,16 +1,19 @@
 # 开发环境检查报告
 
-- 生成时间：2026-06-03T00:00:10
+- 生成时间：2026-06-03T23:37:52
 - 项目根目录：`/Users/jiuyu/Desktop/ai-learning-lab`
 - Python 版本：`3.11.15`
 - Python 路径：`/Users/jiuyu/miniconda3/envs/ai-basic/bin/python`
-- Git 分支：`practice/add-daily-note`
+- Git 分支：`add-advance-note`
 
 ## Git 状态
 
 ```text
-?? "advancedpython/\350\277\255\344\273\243\345\231\250\344\270\216\347\224\237\346\210\220\345\231\250.py"
-?? docs/generator-log.md
+M notes/learning-log.md
+ M reports/workstation-check.json
+ M reports/workstation-report.md
+?? "advancedpython/\346\263\250\350\247\243\344\270\216\344\273\243\347\240\201\350\264\250\351\207\217.py"
+?? "docs/\347\261\273\345\236\213\346\263\250\351\207\212\344\270\216\344\273\243\347\240\201\350\264\250\351\207\217.md"
 ```
 
 ## 项目文件列表
@@ -54,6 +57,7 @@
 - `advancedpython/task_hours.csv`
 - `advancedpython/task_log.json`
 - `advancedpython/tasks.csv`
+- `advancedpython/注解与代码质量.py`
 - `advancedpython/迭代器与生成器.py`
 - `basicpython/1.about_me.py`
 - `basicpython/output/quotes.html`
@@ -73,6 +77,7 @@
 - `docs/basic-log.md`
 - `docs/commands.md`
 - `docs/generator-log.md`
+- `docs/类型注释与代码质量.md`
 - `main.py`
 - `notebooks/01-workstation-review.py`
 - `notes/learning-log.md`
