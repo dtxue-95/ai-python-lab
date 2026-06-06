@@ -1,6 +1,6 @@
 # 开发环境检查报告
 
-- 生成时间：2026-06-03T23:37:52
+- 生成时间：2026-06-06T22:53:59
 - 项目根目录：`/Users/jiuyu/Desktop/ai-learning-lab`
 - Python 版本：`3.11.15`
 - Python 路径：`/Users/jiuyu/miniconda3/envs/ai-basic/bin/python`
@@ -12,8 +12,7 @@
 M notes/learning-log.md
  M reports/workstation-check.json
  M reports/workstation-report.md
-?? "advancedpython/\346\263\250\350\247\243\344\270\216\344\273\243\347\240\201\350\264\250\351\207\217.py"
-?? "docs/\347\261\273\345\236\213\346\263\250\351\207\212\344\270\216\344\273\243\347\240\201\350\264\250\351\207\217.md"
+?? "python\351\241\271\347\233\256\347\273\203\344\271\240/"
 ```
 
 ## 项目文件列表
@@ -81,6 +80,9 @@ M notes/learning-log.md
 - `main.py`
 - `notebooks/01-workstation-review.py`
 - `notes/learning-log.md`
+- `python项目练习/projectTaskTodo.md`
+- `python项目练习/projectTaskTodo.py`
+- `python项目练习/tasks.json`
 - `reports/workstation-check.json`
 - `reports/workstation-report.md`
 - `requitements.txt`
